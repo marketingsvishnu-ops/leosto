@@ -1,485 +1,357 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cricket Pulse - Cricket News</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      color: #222;
-    }
+body{
+  background:#0f1020;
+  color:white;
+}
 
-    header {
-      background: #071d49;
-      color: white;
-      padding: 18px 6%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+.container{
+  display:flex;
+  flex-direction:row-reverse;
+  min-height:100vh;
+}
 
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-    }
+.demo{
+  width:70%;
+  background:#111;
+  position:relative;
+}
 
-    .logo span {
-      color: #19d66b;
-    }
+iframe{
+  width:100%;
+  height:100vh;
+  border:none;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 25px;
-      font-weight: bold;
-    }
+.right{
+  width:30%;
+  padding:30px 22px;
+  background:linear-gradient(180deg,#181a35,#0b0c18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow-y:auto;
+}
 
-    nav a:hover {
-      color: #19d66b;
-    }
+.box{
+  width:100%;
+  background:rgba(10,10,10,.88);
+  border:1px solid #FF8C2B;
+  border-radius:22px;
+  padding:26px 20px;
+  text-align:center;
+  box-shadow:0 0 35px rgba(255,140,43,.28);
+}
 
-    .hero {
-      min-height: 430px;
-      background:
-        linear-gradient(rgba(0, 20, 50, .75), rgba(0, 20, 50, .8)),
-        url("https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1600&q=80")
-        center/cover;
-      display: flex;
-      align-items: center;
-      padding: 60px 6%;
-      color: white;
-    }
+.badge{
+  display:inline-block;
+  background:#FF8C2B;
+  color:#fff;
+  padding:8px 18px;
+  border-radius:30px;
+  font-weight:800;
+  margin-bottom:16px;
+}
 
-    .hero-content {
-      max-width: 700px;
-    }
+h1{
+  font-size:34px;
+  color:#FF8C2B;
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
 
-    .tag {
-      display: inline-block;
-      background: #19d66b;
-      color: #062b18;
-      padding: 7px 13px;
-      border-radius: 20px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
+.sub{
+  font-size:17px;
+  line-height:1.5;
+  margin-bottom:22px;
+  color:#eee;
+}
 
-    .hero h1 {
-      font-size: 52px;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
+.features{
+  display:grid;
+  gap:12px;
+  margin:22px 0;
+}
 
-    .hero p {
-      font-size: 18px;
-      line-height: 1.6;
-      color: #ddd;
-    }
+.feature{
+  background:linear-gradient(90deg,#1b1b1b,#2b2208);
+  border:1px solid rgba(255,170,70,.55);
+  padding:14px;
+  border-radius:14px;
+  font-size:17px;
+  font-weight:700;
+}
 
-    .container {
-      width: 88%;
-      max-width: 1250px;
-      margin: 40px auto;
-    }
+.feature span{
+  color:#FF8C2B;
+}
 
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
+/* Signup Button */
+.signup-btn{
+  display:inline-block;
+  margin-top:8px;
+  padding:9px 16px;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  border-radius:9px;
+  font-size:15px;
+  font-weight:800;
+  border:1px solid #1ebe5d;
+  transition:.3s;
+}
 
-    .section-title h2 {
-      font-size: 30px;
-      color: #071d49;
-    }
+.signup-btn:hover{
+  background:#1ebe5d;
+  transform:scale(1.03);
+}
 
-    .section-title a {
-      color: #087f3e;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.website-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:16px;
+  font-size:14px;
+  font-weight:bold;
+}
 
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
+.website-row a{
+  text-decoration:none;
+}
 
-    .card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,.08);
-      transition: transform .25s;
-    }
+.website{
+  color:#25D366;
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+.whatsapp-small{
+  color:#FF8C2B;
+}
 
-    .card img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-    }
+.cta{
+  display:block;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  padding:17px;
+  border-radius:16px;
+  font-size:20px;
+  font-weight:900;
+  margin-top:22px;
+  box-shadow:0 8px 18px rgba(37,211,102,.35);
+  transition:.3s;
+}
 
-    .card-content {
-      padding: 20px;
-    }
+.cta:hover{
+  transform:scale(1.03);
+  background:#1ebe5d;
+}
 
-    .category {
-      color: #0b9b50;
-      font-size: 13px;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
+/* Floating Signup Button */
+.floating-signup{
+  position:absolute;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:50;
+  background:#FF8C2B;
+  color:#fff;
+  padding:12px 24px;
+  border-radius:8px;
+  font-size:18px;
+  font-weight:900;
+  border:3px solid #fff;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(255,140,43,0.6);
+  transition:.3s;
+  text-decoration:none;
+  display:inline-block;
+}
 
-    .card h3 {
-      margin: 10px 0;
-      font-size: 21px;
-      color: #071d49;
-    }
+.floating-signup:hover{
+  transform:translateX(-50%) scale(1.08);
+  background:#E66A1A;
+  box-shadow:0 12px 25px rgba(255,140,43,0.8);
+}
 
-    .card p {
-      color: #666;
-      line-height: 1.5;
-    }
+.trust{
+  margin-top:16px;
+  color:#ccc;
+  font-size:14px;
+  line-height:1.5;
+}
 
-    .score-section {
-      background: #071d49;
-      color: white;
-      padding: 35px 0;
-    }
+.footer{
+  margin-top:18px;
+  font-size:12px;
+  color:#aaa;
+  line-height:1.5;
+}
 
-    .scores {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
+@media(max-width:768px){
+  .container{
+    flex-direction:column-reverse;
+  }
 
-    .score-card {
-      background: #102b5d;
-      padding: 25px;
-      border-radius: 12px;
-      border-left: 5px solid #19d66b;
-    }
+  .demo,
+  .right{
+    width:100%;
+  }
 
-    .score-card .status {
-      color: #19d66b;
-      font-size: 13px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
+  iframe{
+    height:500px;
+  }
 
-    .team {
-      display: flex;
-      justify-content: space-between;
-      margin: 12px 0;
-      font-size: 18px;
-    }
+  .right{
+    padding:20px;
+  }
+}
 
-    .team strong {
-      font-size: 20px;
-    }
+@media(max-width:480px){
+  h1{
+    font-size:28px;
+  }
 
-    .newsletter {
-      background: #19d66b;
-      padding: 45px 20px;
-      text-align: center;
-      margin-top: 50px;
-    }
+  .sub{
+    font-size:16px;
+  }
 
-    .newsletter h2 {
-      color: #062b18;
-      margin-bottom: 10px;
-      font-size: 30px;
-    }
+  .feature{
+    font-size:16px;
+    padding:12px;
+  }
 
-    .newsletter p {
-      margin-bottom: 20px;
-    }
+  .signup-btn{
+    font-size:14px;
+    padding:8px 13px;
+  }
 
-    .newsletter form {
-      display: flex;
-      max-width: 550px;
-      margin: auto;
-    }
+  .cta{
+    font-size:18px;
+    padding:15px;
+  }
 
-    .newsletter input {
-      flex: 1;
-      padding: 15px;
-      border: none;
-      outline: none;
-      font-size: 16px;
-      border-radius: 6px 0 0 6px;
-    }
+  .website-row{
+    flex-direction:column;
+    gap:8px;
+  }
+}
+</style>
 
-    .newsletter button {
-      padding: 15px 25px;
-      border: none;
-      background: #071d49;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 0 6px 6px 0;
-    }
-
-    footer {
-      background: #04132f;
-      color: #aaa;
-      text-align: center;
-      padding: 30px;
-      margin-top: 0;
-    }
-
-    footer strong {
-      color: white;
-    }
-
-    @media (max-width: 900px) {
-      .news-grid,
-      .scores {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero h1 {
-        font-size: 40px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      nav a {
-        margin: 0 7px;
-        font-size: 14px;
-      }
-
-      .news-grid,
-      .scores {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: 400px;
-      }
-
-      .hero h1 {
-        font-size: 34px;
-      }
-
-      .newsletter form {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .newsletter input,
-      .newsletter button {
-        border-radius: 6px;
-      }
-    }
-  </style>
 </head>
 
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="logo">Cricket<span>Pulse</span></div>
+<div class="container">
 
-    <nav>
-      <a href="#">Home</a>
-      <a href="#news">News</a>
-      <a href="#scores">Scores</a>
-      <a href="#videos">Videos</a>
-    </nav>
-  </header>
+  <div class="demo">
+    <a href="https://icecric.com/clk?src=27705d9eff" target="_blank" rel="noopener noreferrer" class="floating-signup">🔥 CLICK ON SIGNUP 🔥</a>
+    <iframe src="https://icecric.com/clk?src=27705d9eff"></iframe>
+  </div>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-content">
-      <span class="tag">BREAKING NEWS</span>
+  <div class="right">
+    <div class="box">
 
-      <h1>All the cricket news, in one place.</h1>
+```
+  <div class="badge">AUTO WEBSITE</div>
 
-      <p>
-        Get the latest cricket headlines, match updates, player stories,
-        scores, analysis and everything happening in the world of cricket.
-      </p>
-    </div>
-  </section>
+  <h1>Get Your ID Now</h1>
 
-  <!-- Latest News -->
-  <main class="container" id="news">
+  <p class="sub">
+    Fast auto website service with easy deposit support.
+    New users can start quickly through WhatsApp.
+  </p>
 
-    <div class="section-title">
-      <h2>Latest Cricket News</h2>
-      <a href="#">View All →</a>
+  <div class="features">www.icecric.com
+
+    <div class="feature">
+      Minimum Deposit: <span>₹100 Only</span>
     </div>
 
-    <div class="news-grid">
-
-      <article class="card">
-        <img
-          src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=800&q=80"
-          alt="Cricket match">
-        <div class="card-content">
-          <div class="category">International</div>
-          <h3>Big clash set to headline the cricket calendar</h3>
-          <p>
-            Cricket fans are preparing for another exciting international
-            contest as both teams look to make an impact.
-          </p>
-        </div>
-      </article>
-
-      <article class="card">
-        <img
-          src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=800&q=80"
-          alt="Cricket player">
-        <div class="card-content">
-          <div class="category">Players</div>
-          <h3>Star players prepare for the next challenge</h3>
-          <p>
-            Top players are stepping up their preparations ahead of a busy
-            schedule of cricket across formats.
-          </p>
-        </div>
-      </article>
-
-      <article class="card">
-        <img
-          src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80"
-          alt="Cricket stadium">
-        <div class="card-content">
-          <div class="category">Tournaments</div>
-          <h3>What to watch in the upcoming tournament</h3>
-          <p>
-            Here are some of the key matches, players and storylines to
-            follow during the tournament.
-          </p>
-        </div>
-      </article>
-
+    <div class="feature">
+      Welcome Bonus: <span>10%</span>
     </div>
-  </main>
 
-  <!-- Live Scores -->
-  <section class="score-section" id="scores">
-    <div class="container">
-
-      <div class="section-title">
-        <h2 style="color:white;">Live Scores</h2>
-        <a href="#">Full Scorecard →</a>
-      </div>
-
-      <div class="scores">
-
-        <div class="score-card">
-          <div class="status">● LIVE</div>
-          <h3>India vs Australia</h3>
-
-          <div class="team">
-            <span>India</span>
-            <strong>245/6</strong>
-          </div>
-
-          <div class="team">
-            <span>Australia</span>
-            <strong>198/7</strong>
-          </div>
-
-          <p>India lead by 47 runs</p>
-        </div>
-
-        <div class="score-card">
-          <div class="status">● LIVE</div>
-          <h3>England vs South Africa</h3>
-
-          <div class="team">
-            <span>England</span>
-            <strong>187/4</strong>
-          </div>
-
-          <div class="team">
-            <span>South Africa</span>
-            <strong>182/8</strong>
-          </div>
-
-          <p>England need 1 run to win</p>
-        </div>
-
-        <div class="score-card">
-          <div class="status">UPCOMING</div>
-          <h3>Pakistan vs New Zealand</h3>
-
-          <div class="team">
-            <span>Pakistan</span>
-            <strong>-</strong>
-          </div>
-
-          <div class="team">
-            <span>New Zealand</span>
-            <strong>-</strong>
-          </div>
-
-          <p>Match starts at 7:30 PM</p>
-        </div>
-
-      </div>
+    <div class="feature">
+      Auto Website Support:
+      <a
+        class="signup-btn"
+        href="https://icecric.com/clk?src=27705d9eff"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Click on Signup
+      </a>
     </div>
-  </section>
 
-  <!-- Newsletter -->
-  <section class="newsletter">
-    <h2>Never Miss a Cricket Update</h2>
-    <p>Subscribe to get the latest cricket news delivered to your inbox.</p>
+    <div class="feature">
+      Quick Help:
+      <span>Deposit &amp; Withdrawal Support</span>
+    </div>
 
-    <form onsubmit="subscribe(event)">
-      <input
-        type="email"
-        id="email"
-        placeholder="Enter your email address"
-        required>
+  </div>
 
-      <button type="submit">Subscribe</button>
-    </form>
-  </section>
+  <div class="website-row">
 
-  <!-- Footer -->
-  <footer>
-    <p>
-      © 2026 <strong>CricketPulse</strong> — Your Cricket News Channel
-    </p>
-  </footer>
+    <a
+      class="website"
+      href="https://icecric.com/clk?src=27705d9eff"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      🌐 www.icecric.com
+    </a>
 
-  <script>
-    function subscribe(event) {
-      event.preventDefault();
+    <a
+      class="whatsapp-small"
+      href="https://wa.me/447777364879"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      💬 WhatsApp
+    </a>
 
-      const email = document.getElementById("email").value;
+  </div>
 
-      alert("Thanks for subscribing with: " + email);
+  <a
+    class="cta"
+    href="https://wa.me/447777364879?text=Hello%20I%20want%20new%20manual%20ID"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    📲 WhatsApp Now
+  </a>
 
-      document.getElementById("email").value = "";
-    }
-  </script>
+  <p class="trust">
+    ✅ Trusted Manual Support<br>
+    ✅ Simple Process<br>
+    ✅ Fast Response
+  </p>
+
+  <div class="footer">
+    18+ Only | Play Responsibly | Follow Your Local Laws | T&amp;C Apply
+  </div>
+
+</div>
+```
+
+  </div>
+
+</div>
 
 </body>
 </html>
